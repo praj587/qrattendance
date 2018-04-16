@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ParveenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Eventlog">
+          <Key>
+            <PropertyRef Name="Eventid" />
+          </Key>
+          <Property Name="Eventid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eventname" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Eventtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Reg">
+          <Key>
+            <PropertyRef Name="Cus_key" />
+          </Key>
+          <Property Name="Cus_key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cus_Id" Type="int" Nullable="false" />
+          <Property Name="Cus_Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Cus_Mobile" Type="varchar" MaxLength="24" />
+          <Property Name="Cus_Company" Type="varchar" MaxLength="100" />
+          <Property Name="Cus_Occupation" Type="varchar" MaxLength="150" />
+          <Property Name="Cus_Email" Type="varchar" MaxLength="100" />
+          <Property Name="IsPresent" Type="char" MaxLength="1" />
+          <Property Name="IsGift" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Parveen_01.dbo.tempuser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="ParveenModelStoreContainer">
+          <EntitySet Name="Eventlog" EntityType="Self.Eventlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Reg" EntityType="Self.tbl_Reg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ParveenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Reg">
+          <Key>
+            <PropertyRef Name="Cus_key" />
+          </Key>
+          <Property Name="Cus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Cus_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cus_Mobile" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Cus_Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cus_Occupation" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IsPresent" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IsGift" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Cus_key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cus_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ParveenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Reg" EntityType="Self.tbl_Reg" />
+          <EntitySet Name="UserProfiles" EntityType="ParveenModel.UserProfile" />
+          <EntitySet Name="Eventlogs" EntityType="ParveenModel.Eventlog" />
+        </EntityContainer>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Eventlog">
+          <Key>
+            <PropertyRef Name="Eventid" />
+          </Key>
+          <Property Name="Eventid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eventname" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Eventtime" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ParveenModelStoreContainer" CdmEntityContainer="ParveenEntities">
+          <EntitySetMapping Name="tbl_Reg">
+            <EntityTypeMapping TypeName="ParveenModel.tbl_Reg">
+              <MappingFragment StoreEntitySet="tbl_Reg">
+                <ScalarProperty Name="Cus_Email" ColumnName="Cus_Email" />
+                <ScalarProperty Name="Cus_key" ColumnName="Cus_key" />
+                <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+                <ScalarProperty Name="Cus_Name" ColumnName="Cus_Name" />
+                <ScalarProperty Name="Cus_Mobile" ColumnName="Cus_Mobile" />
+                <ScalarProperty Name="Cus_Company" ColumnName="Cus_Company" />
+                <ScalarProperty Name="Cus_Occupation" ColumnName="Cus_Occupation" />
+                <ScalarProperty Name="IsPresent" ColumnName="IsPresent" />
+                <ScalarProperty Name="IsGift" ColumnName="IsGift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="ParveenModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventlogs">
+            <EntityTypeMapping TypeName="ParveenModel.Eventlog">
+              <MappingFragment StoreEntitySet="Eventlog">
+                <ScalarProperty Name="Eventtime" ColumnName="Eventtime" />
+                <ScalarProperty Name="Eventname" ColumnName="Eventname" />
+                <ScalarProperty Name="Eventid" ColumnName="Eventid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

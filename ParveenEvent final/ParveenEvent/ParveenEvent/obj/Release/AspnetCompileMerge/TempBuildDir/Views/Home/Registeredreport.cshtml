@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ParveenEvent.Models.tbl_Reg>
+
+@{
+    ViewBag.Title = "Registeredreport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Total Registered Customers</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+           ID
+        </th>
+        <th>
+           NAME
+        </th>
+        <th>
+           Mobile
+        </th>
+        <th>
+          Company
+        </th>
+        <th>
+           Designation
+        </th>
+        <th>
+          Email
+        </th>
+        
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Occupation)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Email)
+        </td>
+      
+    </tr>
+}
+
+</table>

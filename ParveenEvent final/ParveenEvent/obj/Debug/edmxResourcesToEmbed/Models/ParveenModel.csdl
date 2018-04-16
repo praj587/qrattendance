@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParveenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Reg">
+    <Key>
+      <PropertyRef Name="Cus_Id" />
+      <PropertyRef Name="Cus_Name" />
+      <PropertyRef Name="Cus_key" />
+    </Key>
+    <Property Name="Cus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cus_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cus_Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Cus_Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cus_Occupation" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IsPresent" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IsGift" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Cus_key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cus_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="ParveenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Reg" EntityType="Self.tbl_Reg" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ParveenEvent.Models.tbl_Reg>
+
+@{
+    ViewBag.Title = "Consolidatedreport";
+    Layout = "~/Views/Shared/_RLayout.cshtml";
+}
+
+<h2>Consolidated report</h2>
+
+<table class="table" id="TblTotalcnrpt">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+            <th scope="col">
+                NAME
+            </th>
+            <th scope="col">
+                Mobile
+            </th>
+            <th scope="col">
+                Company
+            </th>
+            <th scope="col">
+                Designation
+            </th>
+            <th scope="col">
+                Email
+            </th>
+            <th scope="col">
+                Checked In
+            </th>
+            <th scope="col">
+                Received Gift
+            </th>
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Occupation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Email)
+        </td>
+        <td>
+            @if (item.IsPresent == "Y") {@Html.Raw("Yes") } else { @Html.Raw("No") }
+        </td>
+        
+        <td>
+            @if (item.IsGift == "Y")
+    {@Html.Raw("Yes") }
+else
+{ @Html.Raw("No")}
+
+
+        </td>
+
+    </tr>
+    }
+
+</table>
+<div class="zoom">
+    <a class="zoom-fab zoom-btn-larged printcnrpt" id="zoomBtn" title="Print"><i class="material-icons">&#xE8AD;</i></a>
+  
+
+</div>

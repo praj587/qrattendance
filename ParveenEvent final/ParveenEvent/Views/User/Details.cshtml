@@ -1,0 +1,67 @@
+﻿@model ParveenEvent.Models.tbl_Reg
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Reg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cus_Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cus_Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cus_Company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cus_Company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cus_Occupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cus_Occupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPresent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPresent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsGift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsGift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cus_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cus_Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

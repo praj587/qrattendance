@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParveenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Eventlog">
+    <Key>
+      <PropertyRef Name="Eventid" />
+    </Key>
+    <Property Name="Eventid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Eventname" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Eventtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_Reg">
+    <Key>
+      <PropertyRef Name="Cus_key" />
+    </Key>
+    <Property Name="Cus_key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cus_Id" Type="int" Nullable="false" />
+    <Property Name="Cus_Name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Cus_Mobile" Type="varchar" MaxLength="24" />
+    <Property Name="Cus_Company" Type="varchar" MaxLength="100" />
+    <Property Name="Cus_Occupation" Type="varchar" MaxLength="150" />
+    <Property Name="Cus_Email" Type="varchar" MaxLength="100" />
+    <Property Name="IsPresent" Type="char" MaxLength="1" />
+    <Property Name="IsGift" Type="char" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Parveen_01.dbo.tempuser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="ParveenModelStoreContainer">
+    <EntitySet Name="Eventlog" EntityType="Self.Eventlog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Reg" EntityType="Self.tbl_Reg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

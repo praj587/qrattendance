@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Paths>
+  <Jars>
+    <Jar>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\10\jl\bin\classes.jar</Jar>
+    <Jar>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\11\jl\bin\classes.jar</Jar>
+    <Jar>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\12\jl\bin\classes.jar</Jar>
+    <Jar>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\13\jl\bin\classes.jar</Jar>
+    <Jar>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\7\jl\support-annotations.jar</Jar>
+    <Jar>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\8\jl\bin\classes.jar</Jar>
+    <Jar>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\9\jl\bin\classes.jar</Jar>
+  </Jars>
+  <ResolvedResourceDirectories>
+    <ResolvedResourceDirectory>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\0\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\3\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\13\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\16\jl\res</ResolvedResourceDirectory>
+  </ResolvedResourceDirectories>
+  <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>obj\Release\lp\0\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Release\lp\3\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Release\lp\13\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Release\lp\16\jl\assets</ResolvedAssetDirectory>
+  </ResolvedAssetDirectories>
+  <ResolvedEnvironmentFiles />
+  <ResolvedResourceDirectoryStamps>
+    <ResolvedResourceDirectoryStamp>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\0.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\3.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\13.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Parthiban\Xing\Android\Sample.Android\obj\Release\lp\16.stamp</ResolvedResourceDirectoryStamp>
+  </ResolvedResourceDirectoryStamps>
+</Paths>

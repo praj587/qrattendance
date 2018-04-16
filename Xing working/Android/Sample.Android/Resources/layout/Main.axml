@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="5">
+    <Button
+        android:text="Scan ID Card"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonScanDefaultView"
+        android:layout_weight="1" />
+    <Button
+        android:text="Scan Gift Voucher"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonScanVoucherView"
+        android:layout_weight="1" />
+</LinearLayout>

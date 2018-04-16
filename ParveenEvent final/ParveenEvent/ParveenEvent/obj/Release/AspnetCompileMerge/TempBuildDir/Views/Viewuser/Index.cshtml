@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_default.cshtml";
+}
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+
+<div id="jsGrid" class="jsgrid"></div>
+@section scripts {
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+
+    <script>
+    $(function() {
+
+     
+
+        $("#jsGrid").jsGrid({
+                  width: "80%",
+                  filtering: true,
+            inserting: false,
+            editing: true,
+            sorting: true,
+            paging: true,
+            autoload: true,
+
+            pageSize: 3,
+            pageButtonCount: 5,
+
+            deleteConfirm: "Do you really want to delete User?",
+
+            controller: {
+                loadData: function (filter) {
+                 
+                   return  $.ajax({
+                        type: "GET",
+                        url: "/api/User",
+                        data: filter,
+                        dataType: "json",
+                        contentType: 'application/json'
+
+                    });
+                },
+               
+
+                insertItem: function(item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/api/User",
+                        data: JSON.stringify(item),
+                        dataType: "json",
+                        contentType: 'application/json'
+                    });
+                },
+
+                updateItem: function(item) {
+                    return $.ajax({
+                        type: "PUT",
+                        url: "/api/User/" + item.Cus_Id,
+                        data: JSON.stringify(item),
+                        dataType: "application/json; charset=UTF-8",
+                        contentType: 'application/json'
+                    });
+                },
+
+                deleteItem: function(item) {
+                    return $.ajax({
+                        type: "DELETE",
+                        url: "/api/User/" + item.Cus_Id,
+                        dataType: "json",
+                        contentType: 'application/json'
+                    });
+                }
+            },
+
+            fields: [
+                { name: "Cus_Id", type: "number", title: "ID", width: 50, align: "center" ,filter:false},
+                { name: "Cus_Name", type: "text", title: "Name", width: 150, align: "center" },
+                { name: "Cus_Company", type: "text", title: "Company", width: 150 },
+                { name: "Cus_Mobile", type: "text", title: "Mobile", width: 200},
+                { name: "Cus_Occupation", type: "text", title: "Position", width: 200},
+                { name: "Cus_Email", type: "text", title: "Email" },
+                 {
+                     type: "control", editButton: false, deleteButton: false, width: 100,
+                     itemTemplate: function (value, item) {
+                         var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+
+                         var $customButton = $("<button>")
+                             .text("View")
+                             .click(function (e) {
+                                 alert("View Success" );
+                                 e.stopPropagation();
+                             });
+
+                         return $result.add($customButton);
+                     }
+                 }
+                //, { type: "control" }
+            ]
+    
+        });
+
+    });
+    </script>
+}
+

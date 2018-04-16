@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/sb-admin.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+
+        .side-nav {
+            position: fixed;
+            left: 0px !important;
+            top: 50px !important;
+        }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(http://vpl.com.ua/wp-content/themes/vpl/images/preloader.gif) center no-repeat #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>   @Session["UserName"].ToString() <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                            @*<li>
+                                <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            </li>
+                            <li class="divider"></li>*@
+                            <li>
+                                <a href="/Home/LogOut/"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="/Home/Index/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/Home/Manageusers/"><i class="fa fa-fw fa-user"></i> Customer Management</a>
+                    </li>
+                    @if (@Session["IsActive"].ToString().ToLower() == "true")
+                    {
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-gear"></i> Reports <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="/Home/RegisteredReposrt/">Registered Customers</a>
+                            </li>
+                            <li>
+                                <a href="/Home/Presentreport/">Checked in Customers</a>
+                            </li>
+                            <li>
+                                <a href="/Home/Absencereport/">Customers Not Checked In</a>
+                            </li>
+                            <li>
+                                <a href="/Home/Giftreceivedtreport/">Gift Received </a>
+                            </li>
+                            <li>
+                                <a href="/Home/Giftnotreceivedtreport/">Gift Not received </a>
+                            </li>
+                            <li>
+                                <a href="/Home/Consolidatedreport/">View All </a>
+                            </li>
+                        </ul>
+                    </li>
+                    }
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+
+        @RenderBody()
+
+
+
+    </div>
+
+    <div class="se-pre-con"></div>
+
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            window.setTimeout("fadeMyDiv();", 1000); //call fade in 3 seconds
+        }
+        )
+
+        function fadeMyDiv() {
+            $(".se-pre-con").fadeOut('slow');
+        }
+
+    </script>
+    <script>
+        $(document).ready(function () {
+          
+           // alert($(document).find("title").text());
+            if ($(document).find("title").text().toLowerCase() == "dashboard") {
+                loadcards();
+
+                var refreshId = setInterval(function () {
+                    loadcards();
+                    Loadlogs();
+                }, 10000);
+                
+            }
+           
+        });
+        function loadcards() {
+
+            //regitered count
+            $.ajax({
+                type: "get",
+                url: "/api/UserMaster/GetUsercount",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, textStatus, xhr) {
+                    $(".totreg").text(data);
+                    $(".tbltotreg").text(data);
+                    // alert(data);
+                   
+                   // $("#snackbar").text(data);
+                    //showalert();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+
+            //checked in count
+            $.ajax({
+                type: "get",
+                url: "/api/UserMaster/GetPresentcount",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, textStatus, xhr) {
+                    $(".totci").text(data);
+                    $(".tbltotci").text(data);
+                    // alert(data);
+
+                    // $("#snackbar").text(data);
+                    //showalert();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+
+            //gift count
+            $.ajax({
+                type: "get",
+                url: "/api/UserMaster/GetGiftcount",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, textStatus, xhr) {
+                    $(".totgift").text(data);
+                    $(".tbltotgift").text(data);
+                    // alert(data);
+
+                    // $("#snackbar").text(data);
+                    //showalert();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+
+            //absent count
+            $.ajax({
+                type: "get",
+                url: "/api/UserMaster/GetAbsentcount",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, textStatus, xhr) {
+                    $(".totnci").text(data);
+                    $(".tbltotnci").text(data);
+                    // alert(data);
+
+                    // $("#snackbar").text(data);
+                    //showalert();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+        function Loadlogs() {
+            $.getJSON("/api/UserMaster/GetLog",
+                function (json) {
+                    var div = $(".loggroup");
+                    //Append each row to html table
+                    var dr;
+                    $(".loggroup").find("a").remove();
+
+                    for (var i = 0; i < json.length; i++) {
+                        
+                        dr = ('<a href="#" class="list-group-item"><span class= "badge"> ' + json[i].Eventtime + '</span ><i class="fa fa-fw fa-user"></i>' + json[i].Eventname + '</a >');
+                       
+                        div.append(dr);
+
+                    }
+
+
+                });
+           
+        }
+    </script>
+</body>
+</html>
